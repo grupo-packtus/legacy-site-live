@@ -261,7 +261,7 @@ h2{font-size:clamp(28px,3.4vw,46px);line-height:1.12;letter-spacing:-.022em;font
     </div>
     <form class="form-unico revela r2" data-form-unico data-origem="site-live" data-variante="live" data-obrigado="live" data-botao="Inscreva-se na live" action="/api/lead" method="post" novalidate>
       <h3 class="form-titulo">Inscrição na live</h3>
-      <p class="form-sub">Próxima: segunda, 09/11, às 20h. Gratuita.</p>
+      <p class="form-sub" data-proxima-live>Toda segunda, às 20h. Gratuita.</p>
       <p class="form-passo" data-form-passo hidden>Etapa 1 de 2</p>
       <div class="form-etapa" data-form-etapa="1">
         <div class="campo" data-campo="nome"><label for="f-nome">Nome completo</label><input id="f-nome" name="nome" type="text" autocomplete="name" maxlength="120" required aria-describedby="f-nome-erro"><p class="erro-campo" id="f-nome-erro" hidden></p></div>
@@ -275,8 +275,8 @@ h2{font-size:clamp(28px,3.4vw,46px);line-height:1.12;letter-spacing:-.022em;font
       <button class="btn-form" type="button" data-form-continuar hidden>Continuar</button>
       <div class="form-etapa" data-form-etapa="2">
         <div class="campo" data-campo="email"><label for="f-email">E-mail <span class="dica" data-email-dica>(opcional)</span></label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="160" aria-describedby="f-email-erro"><p class="erro-campo" id="f-email-erro" hidden></p></div>
-        <div class="campo" data-campo="cnpj"><label for="f-cnpj">CNPJ da empresa</label><input id="f-cnpj" name="cnpj" type="text" inputmode="numeric" autocomplete="off" maxlength="18" placeholder="00.000.000/0000-00" required aria-describedby="f-cnpj-erro"><p class="erro-campo" id="f-cnpj-erro" hidden></p></div>
-        <div class="campo" data-campo="atuacao"><label for="f-atuacao">O que a empresa vende e onde atende</label><textarea id="f-atuacao" name="atuacao" maxlength="400" rows="3" required aria-describedby="f-atuacao-erro"></textarea><p class="erro-campo" id="f-atuacao-erro" hidden></p></div>
+        <div class="campo" data-campo="cnpj"><label for="f-cnpj">CNPJ da empresa <span class="dica">(opcional)</span></label><input id="f-cnpj" name="cnpj" type="text" inputmode="numeric" autocomplete="off" maxlength="18" placeholder="00.000.000/0000-00" aria-describedby="f-cnpj-erro"><p class="erro-campo" id="f-cnpj-erro" hidden></p></div>
+        <div class="campo" data-campo="atuacao"><label for="f-atuacao">O que a empresa vende e onde atende <span class="dica">(opcional)</span></label><textarea id="f-atuacao" name="atuacao" maxlength="400" rows="2" aria-describedby="f-atuacao-erro"></textarea><p class="erro-campo" id="f-atuacao-erro" hidden></p></div>
         <div class="campo" data-campo="situacao">
           <fieldset aria-describedby="f-situacao-erro"><legend>Qual é a situação da empresa com o governo hoje</legend>
             <div class="opcoes">
@@ -324,6 +324,7 @@ h2{font-size:clamp(28px,3.4vw,46px);line-height:1.12;letter-spacing:-.022em;font
   alvos.forEach(function(el){io.observe(el);});
 })();
 </script>
+<script>(function(){var el=document.querySelector("[data-proxima-live]");if(!el)return;try{var f=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Sao_Paulo",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",hour12:false,weekday:"short"});var p={};f.formatToParts(new Date()).forEach(function(x){p[x.type]=x.value});var d=new Date(Date.UTC(+p.year,+p.month-1,+p.day));var w=d.getUTCDay();var h=+p.hour%24;var add=(8-w)%7;if(w===1&&h>=21)add=7;d.setUTCDate(d.getUTCDate()+add);var dd=("0"+d.getUTCDate()).slice(-2),mm=("0"+(d.getUTCMonth()+1)).slice(-2);el.textContent=(add===0?"Próxima: hoje, segunda, ":"Próxima: segunda, ")+dd+"/"+mm+", às 20h. Gratuita."}catch(e){}})();</script>
 <script src="/assets/js/site.js?v=20261019c"></script>
 </body>
 </html>
